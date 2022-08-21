@@ -1,3 +1,4 @@
+import { doc, getFirestore, setDoc } from 'firebase/firestore';
 import { useState } from 'react';
 import styles from '../styles/pages/Index.module.scss';
 
@@ -5,6 +6,8 @@ export default function Index() {
   const [destination, setDestination] = useState('');
   const [shortUrl, setShortUrl] = useState<string>();
   const [loading, setLoading] = useState(false);
+
+  const db = getFirestore();
 
   // returns a random doc path
   function getRandomPath() {
@@ -16,6 +19,30 @@ export default function Index() {
       path += chars[index];
     }
     return path;
+  }
+
+  // creates a new shortened url
+  async function shortenUrl() {
+    // start loading
+    setLoading(true);
+    let err = true;
+    let path;
+    do {
+      // get random doc path
+      path = getRandomPath();
+      const pathDocRef = doc(db, 'paths', path);
+      const created = new Date().getTime();
+      try {
+        // try creating doc
+        await setDoc(pathDocRef, { destination, created });
+        err = false;
+      } catch (e: any) {
+        if (e.code !== 'permission-denied') throw e;
+      }
+    } while (err); // continue while doc path taken
+    // set url
+    setShortUrl(`í.is/${path}`);
+    setLoading(false);
   }
 
   return (
