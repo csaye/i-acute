@@ -6,6 +6,18 @@ export default function Index() {
   const [shortUrl, setShortUrl] = useState<string>();
   const [loading, setLoading] = useState(false);
 
+  // returns a random doc path
+  function getRandomPath() {
+    const chars = 'ijlîïíīįìIÎÏÍĪĮÌ';
+    let path = '';
+    for (let i = 0; i < 4; i++) {
+      // add a random char to the path
+      const index = Math.floor(Math.random() * chars.length);
+      path += chars[index];
+    }
+    return path;
+  }
+
   return (
     <div className={styles.container}>
       <div className={styles.center}>
