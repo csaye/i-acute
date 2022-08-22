@@ -33,4 +33,72 @@
     right: 12px;
     top: 12px;
   }
+
+  >.center {
+    text-align: center;
+
+    >.head {
+
+      >h1 {
+        font-size: 64px;
+        margin: 0;
+      }
+
+      >p {
+        margin: 0 0 12px 0;
+      }
+
+      >.examples {
+        display: flex;
+        justify-content: center;
+        gap: 10px;
+        margin: 0 0 12px 0;
+      }
+    }
+
+    >.content {
+      >p {
+        margin: 0;
+      }
+
+      >.result {
+        >p:first-of-type {
+          margin-top: 8px;
+        }
+
+        >button {
+          padding: 12px 24px;
+          width: 175px;
+        }
+
+        >.reset {
+          margin: 12px auto 0 auto;
+          cursor: pointer;
+          width: fit-content;
+
+          &:hover {
+            text-decoration: underline;
+          }
+        }
+      }
+
+      >form {
+        display: flex;
+
+        >input {
+          font-size: 16px;
+          width: 250px;
+          background: #fafafa;
+          border: 2px solid #bbb;
+          border-radius: 4px;
+          padding: 8px;
+        }
+
+        >button {
+          margin-left: 12px;
+          padding: 0 24px;
+        }
+      }
+    }
+  }
 }
