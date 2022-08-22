@@ -1,0 +1,36 @@
+.container {
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  a {
+    color: var(--highlight);
+
+    &:hover {
+      color: var(--highlightHover);
+      text-decoration: underline;
+    }
+  }
+
+  .measure {
+    width: fit-content;
+    position: absolute;
+    pointer-events: none;
+    opacity: 0;
+  }
+
+  >.about {
+    position: absolute;
+    top: 12px;
+    left: 16px;
+    font-size: 24px;
+    margin: 0;
+  }
+
+  >.kofiButton {
+    position: absolute;
+    right: 12px;
+    top: 12px;
+  }
+}
