@@ -1,11 +1,18 @@
+import { CircularProgress } from '@mui/material';
 import { doc, getFirestore, setDoc } from 'firebase/firestore';
-import { useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
+import KofiButton from '../components/KofiButton';
 import styles from '../styles/pages/Index.module.scss';
 
 export default function Index() {
   const [destination, setDestination] = useState('');
-  const [shortUrl, setShortUrl] = useState<string>();
+  const [source, setSource] = useState<string>();
   const [loading, setLoading] = useState(false);
+  const [clipboardText, setClipboardText] = useState('Copy to clipboard');
+  const [reduction, setReduction] = useState<number>();
+
+  const destinationRef = useRef<HTMLParagraphElement>(null);
+  const sourceRef = useRef<HTMLParagraphElement>(null);
 
   const db = getFirestore();
 
@@ -44,6 +51,20 @@ export default function Index() {
     setShortUrl(`í.is/${path}`);
     setLoading(false);
   }
+
+  // calculate text widths
+  useEffect(() => {
+    if (!destinationRef.current || !sourceRef.current) return;
+    // get source width
+    const sourceWidth = sourceRef.current.clientWidth;
+    if (!sourceWidth) return;
+    // get destination width
+    const destinationWidth = destinationRef.current.clientWidth;
+    if (!destinationWidth) return;
+    // calculate width reduction
+    const difference = 1 - (sourceWidth / destinationWidth);
+    setReduction(Math.round(difference * 100));
+  }, [destination, source]);
 
   return (
     <div className={styles.container}>
