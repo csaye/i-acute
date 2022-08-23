@@ -14,7 +14,7 @@ export default function App(props: AppProps) {
     <>
       <Head>
         <title>í.is</title>
-        <meta name="description" content="Taking link shortening to the next level." />
+        <meta name="description" content="A literal URL shortener." />
         <link rel="icon" href="/favicons/favicon.ico" />
         <link rel="apple-touch-icon" sizes="180x180" href="/favicons/apple-touch-icon.png" />
         <link rel="icon" type="image/png" sizes="32x32" href="/favicons/favicon-32x32.png" />

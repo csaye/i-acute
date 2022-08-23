@@ -48,8 +48,21 @@ export default function Index() {
       }
     } while (err); // continue while doc path taken
     // set url
-    setShortUrl(`í.is/${path}`);
+    setSource(`í.is/${path}`);
     setLoading(false);
+  }
+
+  // copies current short url to clipboard
+  async function copyToClipboard() {
+    await navigator.clipboard.writeText(`https://${source}`);
+    setClipboardText('Copied');
+    setTimeout(() => setClipboardText('Copy to clipboard'), 2000);
+  }
+
+  // resets state to default
+  function reset() {
+    setDestination('');
+    setSource(undefined);
   }
 
   // calculate text widths
@@ -142,10 +155,10 @@ export default function Index() {
                   <input
                     value={destination}
                     onChange={e => setDestination(e.target.value)}
-                    placeholder="http://example.com"
+                    placeholder="example.com"
                     required
                   />
-                  <button>
+                  <button className="blueButton">
                     Shorten
                   </button>
                 </form>
