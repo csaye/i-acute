@@ -55,15 +55,35 @@ export default function Index() {
         <div className={styles.content}>
           {
             loading ?
-              <p><i>generating...</i></p> :
-              shortUrl ?
-                <a
-                  href={`https://${shortUrl}`}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
-                  {shortUrl}
-                </a> :
+              <CircularProgress sx={{ color: '#2196f3' }} /> :
+              source ?
+                <div className={styles.result}>
+                  <p>
+                    <span style={{ color: 'red' }}>{destination}</span>
+                    {' '}→{' '}
+                    <a
+                      href={`https://${source}`}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      style={{ color: 'green' }}
+                    >
+                      {source}
+                    </a>
+                  </p>
+                  <p>URL length decreased by <b>{reduction}%</b>.</p>
+                  <button
+                    className="blueButton"
+                    onClick={copyToClipboard}
+                  >
+                    {clipboardText}
+                  </button>
+                  <p
+                    className={styles.reset}
+                    onClick={reset}
+                  >
+                    shorten another →
+                  </p>
+                </div> :
                 <form
                   onSubmit={e => {
                     e.preventDefault();
