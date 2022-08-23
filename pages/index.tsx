@@ -68,10 +68,38 @@ export default function Index() {
 
   return (
     <div className={styles.container}>
+      <p className={styles.about}>
+        <a
+          href="https://www.coop.codes/i-acute"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          About í.is
+        </a>
+      </p>
+      <div className={styles.kofiButton}>
+        <KofiButton />
+      </div>
+      <p className={styles.measure} ref={destinationRef}>
+        {destination}
+      </p>
+      <p className={styles.measure} ref={sourceRef}>
+        {source}
+      </p>
       <div className={styles.center}>
         <div className={styles.head}>
           <h1>í.is</h1>
-          <p>Taking URL shortening to the next level.</p>
+          {
+            (!source && !loading) &&
+            <>
+              <p>A literal URL shortener.</p>
+              <p>Shorten URLs by length <b>and</b> width.</p>
+              <div className={styles.examples}>
+                <span style={{ color: 'red' }}>✘ bit.ly/3c5Op1H</span>
+                <span style={{ color: 'green' }}><b>✓</b> í.is/ÏIįÎ</span>
+              </div>
+            </>
+          }
         </div>
         <div className={styles.content}>
           {
