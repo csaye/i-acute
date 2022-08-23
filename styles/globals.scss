@@ -1,9 +1,23 @@
+:root {
+  --highlight: #2196f3;
+  --highlightHover: #3f51b5;
+}
+
+* {
+  box-sizing: border-box;
+}
+
 html,
 body {
   padding: 0;
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
-    Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
+  font-family: 'Inter', sans-serif;
+}
+
+html,
+body,
+#__next {
+  height: 100%;
 }
 
 a {
@@ -11,16 +25,23 @@ a {
   text-decoration: none;
 }
 
-* {
-  box-sizing: border-box;
+button {
+  cursor: pointer;
+  font-family: 'Inter', sans-serif;
 }
 
-@media (prefers-color-scheme: dark) {
-  html {
-    color-scheme: dark;
+.blueButton {
+  background: #2196f3;
+  color: #fff;
+  border: 0;
+  border-radius: 32px;
+  font-size: 16px;
+
+  &:hover {
+    background: #3f51b5;
   }
-  body {
-    color: white;
-    background: black;
+
+  &:active {
+    transform: scale(0.98);
   }
 }
