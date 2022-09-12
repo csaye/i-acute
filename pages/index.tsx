@@ -77,14 +77,13 @@ export default function Index() {
   // calculate text widths
   useEffect(() => {
     if (!destinationRef.current || !sourceRef.current) return;
-    // get source width
-    const sourceWidth = sourceRef.current.clientWidth;
-    if (!sourceWidth) return;
-    // get destination width
-    const destinationWidth = destinationRef.current.clientWidth;
-    if (!destinationWidth) return;
-    // calculate width reduction
-    const difference = 1 - (sourceWidth / destinationWidth);
+    // get widths
+    const sWidth = sourceRef.current.clientWidth;
+    setSourceWidth(sWidth);
+    const dWidth = destinationRef.current.clientWidth;
+    setDestinationWidth(dWidth);
+    // set reduction
+    const difference = 1 - (sWidth / dWidth);
     setReduction(Math.round(difference * 100));
   }, [destination, source]);
 
