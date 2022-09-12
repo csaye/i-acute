@@ -88,6 +88,12 @@ export default function Index() {
     setReduction(Math.round(difference * 100));
   }, [destination, source]);
 
+  // returns percent change in length from destination to source
+  function lengthChange() {
+    const difference = 1 - (sourceLength / destinationLength);
+    return Math.round(difference * 100);
+  }
+
   return (
     <div className={styles.container}>
       <p className={styles.about}>
