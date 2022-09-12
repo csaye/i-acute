@@ -132,7 +132,16 @@ export default function Index() {
                       {source}
                     </a>
                   </p>
-                  <p>URL length decreased by <b>{reduction}%</b>.</p>
+                  <p className={styles.data}>
+                    Length decreased by <b>{lengthChange()}%</b>.{' '}
+                    <br />
+                    <span>({destinationLength}ch → {sourceLength}ch)</span>
+                  </p>
+                  <p className={styles.data}>
+                    Width decreased by <b>{reduction}%</b>.{' '}
+                    <br />
+                    <span>({destinationWidth}px → {sourceWidth}px)</span>
+                  </p>
                   <button
                     className="blueButton"
                     onClick={copyToClipboard}
