@@ -16,6 +16,15 @@ export default function Index() {
 
   const db = getFirestore();
 
+  // get destination and source length
+  const charRegex = /[^a-z0-9àáâäæãåāçćčèéêëēėęîïíīįìłñńôöòóœøōõßśšûüùúūÿžźż-]/gi;
+  const destinationLength = destination.replace(charRegex, '').length;
+  const sourceLength = 7;
+
+  // get destination and source width
+  const [destinationWidth, setDestinationWidth] = useState<number>();
+  const [sourceWidth, setSourceWidth] = useState<number>();
+
   // returns a random doc path
   function getRandomPath() {
     const chars = 'ijlîïíīįìIÎÏÍĪĮÌ';
