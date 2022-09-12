@@ -66,8 +66,22 @@
       }
 
       >.result {
+        padding: 0 40px;
+
         >p:first-of-type {
           margin-top: 8px;
+        }
+
+        >p.data {
+          span {
+            font-size: 14px;
+          }
+
+          br {
+            @media (min-width: 576px) {
+              display: none;
+            }
+          }
         }
 
         >button {
@@ -79,19 +93,20 @@
           margin: 12px auto 0 auto;
           cursor: pointer;
           width: fit-content;
+          text-decoration: underline;
 
           &:hover {
-            text-decoration: underline;
+            color: var(--highlight);
           }
         }
       }
 
       >form {
         display: flex;
+        flex-direction: column;
 
         >input {
           font-size: 16px;
-          width: 250px;
           background: #fafafa;
           border: 2px solid #bbb;
           border-radius: 4px;
@@ -99,8 +114,8 @@
         }
 
         >button {
-          margin-left: 12px;
-          padding: 0 24px;
+          padding: 12px 24px;
+          margin: 12px 0 0 0;
         }
       }
     }
